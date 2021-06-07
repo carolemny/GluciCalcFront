@@ -1,5 +1,7 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :is_Landlord?, only: [:update, :destroy]
 
   # GET /properties
   def index
@@ -16,7 +18,7 @@ class PropertiesController < ApplicationController
   # POST /properties
   def create
     @property = Property.new(property_params)
-
+    @property.user = current_user
     if @property.save
       render json: @property, status: :created, location: @property
     else
@@ -46,6 +48,12 @@ class PropertiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def property_params
-      params.require(:property).permit(:string, :text, :integer)
+      params.permit(:title, :description, :price, user_id: current_user.id)
+    end
+
+    def is_Landlord?
+      if current_user.nil? || @property.user_id != current_user.id
+        render json: { message: "You are not authorized to edit/delete this post." }, status: :unauthorized
+      end
     end
 end
