@@ -4,7 +4,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :mailjet
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { :host => 'https://immocoin.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'https://api-immo-coin.herokuapp.com/' }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
