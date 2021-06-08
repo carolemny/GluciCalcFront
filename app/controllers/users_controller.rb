@@ -1,14 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
   before_action :authenticate_user!
-  before_action :is_user?, only: [:update, :destroy]
-
-  # GET /users
-  def index
-    @users = User.all
-
-    render json: @users
-  end
+  before_action :is_user?
 
   # GET /users/1
   def show
