@@ -5,5 +5,5 @@ Rails.application.routes.draw do
                  sessions: 'users/sessions',
                  registrations: 'users/registrations'
              }
-  resources :users, except: [:create]
+  resources :users, except: [:create, :index]
 end
