@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_user?
 
+
   # GET /users/1
   def show
     render json: @user
