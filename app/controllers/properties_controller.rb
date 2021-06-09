@@ -12,7 +12,8 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1
   def show
-    render json: @property
+    @user = User.find(@property.user_id)
+    render json: {property: @property, user: @user}
   end
 
   # POST /properties
