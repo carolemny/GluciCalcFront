@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2021_06_07_092556) do
     t.string "title"
     t.text "description"
     t.integer "price"
+    t.string "location"
+    t.string "category"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
