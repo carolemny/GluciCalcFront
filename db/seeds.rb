@@ -18,6 +18,8 @@ end
     title: Faker::Book.title,
     description: Faker::Lorem.sentence,
     price: Faker::Number.number(digits: 6),
+    location: Faker::Address.city,
+    category: ["Maison", "Studio", "Villa", "Appartement"].sample,
     user_id: User.all.sample.id,
   )  
   puts "Create Proprety"
