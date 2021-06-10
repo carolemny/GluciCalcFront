@@ -4,6 +4,8 @@ class CreateProperties < ActiveRecord::Migration[6.1]
       t.string :title
       t.text :description
       t.integer :price
+      t.string :location
+      t.string :category
       t.belongs_to :user, index: true
       t.timestamps
     end
