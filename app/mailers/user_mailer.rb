@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
 
   def forgot_password_email(user)
     @user = user
-    @url  = 'https://react-immo-coin.vercel.app/reset'
+    @url  = 'https://react-immo-coin.vercel.app/password/reset'
     mail(to: @user.email, subject: 'Bienvenue chez nous !')
   end
 end
