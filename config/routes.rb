@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :properties
+  resources :meals
   devise_for :users,
              controllers: {
                  sessions: 'users/sessions',
