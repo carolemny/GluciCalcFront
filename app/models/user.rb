@@ -6,9 +6,9 @@ class User < ApplicationRecord
          :registerable,
          jwt_revocation_strategy: JwtDenylist
 
-  has_many :meals
-  has_many :comments
-  has_many :favorites
+  has_many :meals, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   after_create :welcome_send
 
