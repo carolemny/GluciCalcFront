@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_06_15_084141) do
   create_table "foods", force: :cascade do |t|
     t.string "api_product_id"
     t.string "name"
-    t.integer "type"
+    t.integer "category"
     t.string "description"
     t.float "duration"
     t.datetime "created_at", precision: 6, null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_06_15_084141) do
   end
 
   create_table "meals", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.datetime "date"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
