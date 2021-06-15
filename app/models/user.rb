@@ -7,6 +7,8 @@ class User < ApplicationRecord
          jwt_revocation_strategy: JwtDenylist
 
   has_many :meals
+  has_many :comments
+  has_many :favorites
 
   after_create :welcome_send
 
