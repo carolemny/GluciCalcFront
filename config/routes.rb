@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :password, only: [:index]
   post 'password/forgot', to: 'password#forgot'
   post 'password/reset', to: 'password#reset'
+  get 'days/:iso_date', to: 'meals#show_by_date'
 end

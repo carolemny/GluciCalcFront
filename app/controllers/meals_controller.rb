@@ -1,22 +1,26 @@
 class MealsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_meal, only: [:show, :update, :destroy]
 
-  # GET /meals
   def index
-    @meals = Meal.all
-
+    @meals = Meal.where(user_id: current_user.id)
     render json: @meals
   end
 
-  # GET /meals/1
   def show
     render json: @meal
   end
 
-  # POST /meals
+  def show_by_date
+    date = params[:iso_date]
+    meals = Meal.where(date: date, user_id: current_user.id)
+    render json: meals
+  end
+
   def create
     @meal = Meal.new(meal_params)
-
+    @meal.user = current_user
+    @meal.date = DateTime.now
     if @meal.save
       render json: @meal, status: :created, location: @meal
     else
@@ -24,7 +28,6 @@ class MealsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /meals/1
   def update
     if @meal.update(meal_params)
       render json: @meal
@@ -33,19 +36,18 @@ class MealsController < ApplicationController
     end
   end
 
-  # DELETE /meals/1
   def destroy
     @meal.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_meal
-      @meal = Meal.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def meal_params
-      params.fetch(:meal, {})
-    end
+  def set_meal
+    @meal = Meal.find_by(id: params[:id], user_id: current_user.id)
+    render :json => { :error => "Unauthorized" }.to_json, :status => 401 if @meal.nil?
+  end
+
+  def meal_params
+    params.fetch(:meal, {}).permit(:name, :user_id)
+  end
 end
