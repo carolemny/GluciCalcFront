@@ -34,7 +34,7 @@ end
 10.times do
   meal = Meal.create!(
     name: ["petit-déjeuner", "déjeuner", "diner"].sample,
-    date: Date.today,
+    date: Faker::Date.between(from: 2.days.ago, to: Date.today),
     user: User.all.sample,
   )
   puts "Create Meal"
