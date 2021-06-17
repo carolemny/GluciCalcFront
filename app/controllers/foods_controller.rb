@@ -13,6 +13,11 @@ class FoodsController < ApplicationController
     render json: @food
   end
 
+  def show_by_api_id
+    food = Food.where(api_product_id: params[:api_id])
+    render json: food
+  end
+
   # POST /foods
   def create
     if food_already_exists?
