@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  validates :first_name, length: { maximum: 50 }
+  validates :last_name, length: { maximum: 50 }
   after_create :welcome_send
 
   def welcome_send
