@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: user: @user
+    render json: {user: @user}
   end
 
 

@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'immocoinadmin@yopmail.com'
+  default from: 'glucicalcadmin@yopmail.com'
   layout 'mailer'
 end
