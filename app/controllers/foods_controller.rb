@@ -15,12 +15,16 @@ class FoodsController < ApplicationController
 
   # POST /foods
   def create
-    @food = Food.new(food_params)
+    if food_already_exists?
+      @food = Food.new(food_params)
 
-    if @food.save
-      render json: @food, status: :created, location: @food
+      if @food.save
+        render json: @food, status: :created, location: @food
+      else
+        render json: @food.errors, status: :unprocessable_entity
+      end
     else
-      render json: @food.errors, status: :unprocessable_entity
+      render json: {message: "This product is already registered"}
     end
   end
 
@@ -46,6 +50,10 @@ class FoodsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def food_params
-      params.fetch(:food, {})
+      params.fetch(:food, {}).permit(:name, :api_product_id, :category, :description, :duration)
+    end
+
+    def food_already_exists?
+      !Food.where(api_product_id: params[:api_product_id]).exists?
     end
 end

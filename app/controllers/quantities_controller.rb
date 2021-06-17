@@ -46,6 +46,6 @@ class QuantitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quantity_params
-      params.fetch(:quantity, {})
+      params.fetch(:quantity, {}).permit(:quantity, :carbs_per_100g, :meal_id, :product_id, :recipe_id)
     end
 end
