@@ -14,8 +14,18 @@ class FoodsController < ApplicationController
   end
 
   def show_by_api_id
-    food = Food.where(api_product_id: params[:api_id])
-    render json: food
+    food = Food.where(api_product_id: params[:api_id], name: params[:name])
+    if food.exists?
+      render json: food
+    else
+      @food = Food.new(api_product_id: params[:api_id], name: params[:name], category: 1)
+
+      if @food.save
+        render json: @food, status: :created, location: @food
+      else
+        render json: @food.errors, status: :unprocessable_entity
+      end
+    end
   end
 
   # POST /foods
