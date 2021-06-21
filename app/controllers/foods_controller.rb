@@ -14,8 +14,8 @@ class FoodsController < ApplicationController
   end
 
   def show_by_api_id
-    food = Food.where(api_product_id: params[:api_id], name: params[:name])
-    if food.exists?
+    food = Food.find_by(api_product_id: params[:api_id], name: params[:name])
+    if !food.nil?
       render json: food
     else
       @food = Food.new(api_product_id: params[:api_id], name: params[:name], category: 1)
