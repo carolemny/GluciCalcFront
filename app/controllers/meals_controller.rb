@@ -12,8 +12,8 @@ class MealsController < ApplicationController
   end
 
   def show_by_date
-    date = params[:iso_date]
-    meals = Meal.where(date: date, user_id: current_user.id)
+    date = DateTime.parse(params[:iso_date]).to_date
+    meals = Meal.where(date: date.all_day, user_id: current_user.id)
     render json: meals
   end
 

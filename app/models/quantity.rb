@@ -1,5 +1,5 @@
 class Quantity < ApplicationRecord
-  validates :quantity, presence: true
+  validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 1}
   validates :carbs_per_100g, presence: true
   belongs_to :meal
   
