@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   post 'password/forgot', to: 'password#forgot'
   post 'password/reset', to: 'password#reset'
   get 'days/:iso_date', to: 'meals#show_by_date'
-  get 'food/:api_id', to: 'foods#show_by_api_id'
+  get 'food/:api_id/:name', to: 'foods#show_by_api_id'
 end
