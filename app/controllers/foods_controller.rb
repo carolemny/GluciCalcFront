@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_food, only: [:show, :update, :destroy]
 
   # GET /foods
