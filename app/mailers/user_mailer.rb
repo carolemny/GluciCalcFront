@@ -8,6 +8,6 @@ class UserMailer < ApplicationMailer
   def forgot_password_email(user)
     @user = user
     @url  = 'https://react-glucicalc.vercel.app/password/reset'
-    mail(to: @user.email, subject: 'Bienvenue chez nous !')
+    mail(to: @user.email, subject: 'Changement de mot de passe')
   end
 end
