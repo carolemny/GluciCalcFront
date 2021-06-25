@@ -24,5 +24,7 @@ module ApiImmocoin
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.assets.initialize_on_precompile = false
+    config.time_zone = 'Paris'
+    config.active_record.default_timezone = :local
   end
 end
