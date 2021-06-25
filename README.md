@@ -39,7 +39,8 @@ This Ruby on Rails API serves as a Back-End for the ReactJS [GluciCalc](https://
 
 ### PostGreSQL database
 The detailed database schema can be previewed below.
-![Database Preview](public/GluciCalc.jpeg "Database preview")
+
+![Database Preview](public/assets/images/GluciCalc.jpg "Database preview")
 
 ### Ruby Gems
 * [Gem Devise](https://github.com/heartcombo/devise)
