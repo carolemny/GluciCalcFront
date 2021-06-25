@@ -19,6 +19,9 @@ class FoodsController < ApplicationController
     if !food.nil?
       render json: food
     else
+      if params[:name] == "undefined"
+        params[:name]  = "Produit sans nom"
+      end
       @food = Food.new(api_product_id: params[:api_id], name: params[:name], category: 1)
 
       if @food.save
